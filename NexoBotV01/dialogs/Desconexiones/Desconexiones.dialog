@@ -1,0 +1,368 @@
+{
+  "$kind": "Microsoft.AdaptiveDialog",
+  "$designer": {
+    "id": "AhmRr4",
+    "name": "Desconexiones",
+    "comment": ""
+  },
+  "autoEndDialog": true,
+  "defaultResultProperty": "dialog.result",
+  "triggers": [
+    {
+      "$kind": "Microsoft.OnBeginDialog",
+      "$designer": {
+        "name": "BeginDialog",
+        "description": "",
+        "id": "VpFp62"
+      },
+      "actions": [
+        {
+          "$kind": "Microsoft.SwitchCondition",
+          "$designer": {
+            "id": "Gj071b"
+          },
+          "condition": "user.idioma",
+          "cases": [
+            {
+              "value": "Portugues",
+              "actions": [
+                {
+                  "$kind": "Microsoft.TextInput",
+                  "$designer": {
+                    "id": "JtVvBB"
+                  },
+                  "disabled": false,
+                  "maxTurnCount": 3,
+                  "alwaysPrompt": false,
+                  "allowInterruptions": false,
+                  "unrecognizedPrompt": "",
+                  "invalidPrompt": "",
+                  "defaultValueResponse": "",
+                  "prompt": "${TextInput_Prompt_JtVvBB()}",
+                  "property": "user.OptionSubMenu",
+                  "value": "=turn.activity.value"
+                }
+              ]
+            }
+          ],
+          "default": [
+            {
+              "$kind": "Microsoft.SendActivity",
+              "$designer": {
+                "id": "a977pq"
+              },
+              "activity": "${SendActivity_a977pq()}"
+            },
+            {
+              "$kind": "Microsoft.TextInput",
+              "$designer": {
+                "id": "i4TNLc"
+              },
+              "disabled": false,
+              "maxTurnCount": 3,
+              "alwaysPrompt": false,
+              "allowInterruptions": false,
+              "unrecognizedPrompt": "",
+              "invalidPrompt": "",
+              "defaultValueResponse": "",
+              "prompt": "${TextInput_Prompt_i4TNLc()}",
+              "property": "user.OptionSubMenu",
+              "value": "=turn.activity.value"
+            }
+          ]
+        },
+        {
+          "$kind": "Microsoft.TextInput",
+          "$designer": {
+            "id": "rvVSvR"
+          },
+          "disabled": false,
+          "maxTurnCount": 3,
+          "alwaysPrompt": false,
+          "allowInterruptions": false,
+          "unrecognizedPrompt": "",
+          "invalidPrompt": "",
+          "defaultValueResponse": "",
+          "prompt": "${TextInput_Prompt_rvVSvR()}",
+          "property": "user.OptionSubMenu",
+          "value": "=turn.activity.value"
+        },
+        {
+          "$kind": "Microsoft.SetProperty",
+          "$designer": {
+            "id": "uWNJcE"
+          },
+          "property": "conversation.NumeroPreguntasPorSubMenu",
+          "value": "=conversation.NumeroPreguntasPorSubMenu+1"
+        },
+        {
+          "$kind": "Microsoft.EditArray",
+          "$designer": {
+            "id": "CUiEOo"
+          },
+          "changeType": "push",
+          "itemsProperty": "conversation.OpcionesSubMenu",
+          "value": "=user.OptionSubMenu"
+        },
+        {
+          "$kind": "Microsoft.SwitchCondition",
+          "$designer": {
+            "id": "80569Z"
+          },
+          "condition": "user.OptionSubMenu",
+          "cases": [
+            {
+              "value": "Solicitudes de desconexion",
+              "actions": [
+                {
+                  "$kind": "Microsoft.SwitchCondition",
+                  "$designer": {
+                    "id": "m29HIb"
+                  },
+                  "condition": "user.idioma",
+                  "cases": [
+                    {
+                      "value": "Portugues",
+                      "actions": [
+                        {
+                          "$kind": "Microsoft.TextInput",
+                          "$designer": {
+                            "id": "CATTEP"
+                          },
+                          "disabled": false,
+                          "maxTurnCount": 3,
+                          "alwaysPrompt": false,
+                          "allowInterruptions": false,
+                          "unrecognizedPrompt": "",
+                          "invalidPrompt": "",
+                          "defaultValueResponse": "",
+                          "prompt": "${TextInput_Prompt_CATTEP()}",
+                          "property": "user.option",
+                          "value": "=turn.activity.value"
+                        },
+                        {
+                          "$kind": "Microsoft.IfCondition",
+                          "$designer": {
+                            "id": "rphNNH"
+                          },
+                          "condition": "=user.option==\"Informacion general\"",
+                          "actions": [
+                            {
+                              "$kind": "Microsoft.SendActivity",
+                              "$designer": {
+                                "id": "Ki1CmG"
+                              },
+                              "activity": "${SendActivity_Ki1CmG()}"
+                            }
+                          ],
+                          "elseActions": [
+                            {
+                              "$kind": "Microsoft.DeleteProperties",
+                              "$designer": {
+                                "id": "jeut8s"
+                              },
+                              "properties": [
+                                "user.OptionMenu",
+                                "user.OptionSubMenu",
+                                "user.Option",
+                                "user.option"
+                              ]
+                            },
+                            {
+                              "$kind": "Microsoft.BeginDialog",
+                              "$designer": {
+                                "id": "lIJ33M"
+                              },
+                              "activityProcessed": false,
+                              "dialog": "NexoBotV01"
+                            }
+                          ]
+                        }
+                      ]
+                    }
+                  ],
+                  "default": [
+                    {
+                      "$kind": "Microsoft.TextInput",
+                      "$designer": {
+                        "id": "Alffgj"
+                      },
+                      "disabled": false,
+                      "maxTurnCount": 3,
+                      "alwaysPrompt": false,
+                      "allowInterruptions": false,
+                      "unrecognizedPrompt": "",
+                      "invalidPrompt": "",
+                      "defaultValueResponse": "",
+                      "prompt": "${TextInput_Prompt_Alffgj()}",
+                      "property": "user.option",
+                      "value": "=turn.activity.value"
+                    },
+                    {
+                      "$kind": "Microsoft.IfCondition",
+                      "$designer": {
+                        "id": "dWfIsv"
+                      },
+                      "condition": "=user.option==\"Informacion general\"",
+                      "actions": [
+                        {
+                          "$kind": "Microsoft.SendActivity",
+                          "$designer": {
+                            "id": "SCuOJq"
+                          },
+                          "activity": "${SendActivity_SCuOJq()}"
+                        }
+                      ],
+                      "elseActions": [
+                        {
+                          "$kind": "Microsoft.DeleteProperties",
+                          "$designer": {
+                            "id": "eHMN7d"
+                          },
+                          "properties": [
+                            "user.OptionMenu",
+                            "user.OptionSubMenu",
+                            "user.Option",
+                            "user.option"
+                          ]
+                        },
+                        {
+                          "$kind": "Microsoft.BeginDialog",
+                          "$designer": {
+                            "id": "jwekq2"
+                          },
+                          "activityProcessed": false,
+                          "dialog": "NexoBotV01"
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "value": "Reprogramar desconexion",
+              "actions": [
+                {
+                  "$kind": "Microsoft.SwitchCondition",
+                  "$designer": {
+                    "id": "fY74Zy"
+                  },
+                  "condition": "user.idioma",
+                  "cases": [
+                    {
+                      "value": "Portugues",
+                      "actions": [
+                        {
+                          "$kind": "Microsoft.SendActivity",
+                          "$designer": {
+                            "id": "eveoc1"
+                          },
+                          "activity": "${SendActivity_eveoc1()}"
+                        }
+                      ]
+                    }
+                  ],
+                  "default": [
+                    {
+                      "$kind": "Microsoft.SendActivity",
+                      "$designer": {
+                        "id": "y8Amm7"
+                      },
+                      "activity": "${SendActivity_y8Amm7()}"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "value": "Confirmar desconexion",
+              "actions": [
+                {
+                  "$kind": "Microsoft.SwitchCondition",
+                  "$designer": {
+                    "id": "CmkNIB"
+                  },
+                  "condition": "user.idioma",
+                  "cases": [
+                    {
+                      "value": "Portugues",
+                      "actions": [
+                        {
+                          "$kind": "Microsoft.SendActivity",
+                          "$designer": {
+                            "id": "5mWm5a"
+                          },
+                          "activity": "${SendActivity_5mWm5a()}"
+                        }
+                      ]
+                    }
+                  ],
+                  "default": [
+                    {
+                      "$kind": "Microsoft.SendActivity",
+                      "$designer": {
+                        "id": "TvajH6"
+                      },
+                      "activity": "${SendActivity_TvajH6()}"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "value": "Cancelar desconexion",
+              "actions": [
+                {
+                  "$kind": "Microsoft.SwitchCondition",
+                  "$designer": {
+                    "id": "sIjsxf"
+                  },
+                  "condition": "user.idioma",
+                  "cases": [
+                    {
+                      "value": "Portugues",
+                      "actions": [
+                        {
+                          "$kind": "Microsoft.SendActivity",
+                          "$designer": {
+                            "id": "m928KA"
+                          },
+                          "activity": "${SendActivity_m928KA()}"
+                        }
+                      ]
+                    }
+                  ],
+                  "default": [
+                    {
+                      "$kind": "Microsoft.SendActivity",
+                      "$designer": {
+                        "id": "rg9fgo"
+                      },
+                      "activity": "${SendActivity_rg9fgo()}"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "$kind": "Microsoft.DeleteProperties",
+          "$designer": {
+            "id": "7nbWAE"
+          },
+          "properties": [
+            "user.OptionMenu",
+            "user.Option",
+            "user.OptionSubMenu",
+            "user.option"
+          ]
+        }
+      ]
+    }
+  ],
+  "generator": "Desconexiones.lg",
+  "recognizer": "Desconexiones.lu.qna",
+  "id": "Desconexiones"
+}

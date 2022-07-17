@@ -1,0 +1,520 @@
+{
+  "$kind": "Microsoft.AdaptiveDialog",
+  "$designer": {
+    "id": "RbQK5q",
+    "name": "Oportunidad",
+    "comment": ""
+  },
+  "autoEndDialog": true,
+  "defaultResultProperty": "dialog.result",
+  "triggers": [
+    {
+      "$kind": "Microsoft.OnBeginDialog",
+      "$designer": {
+        "name": "BeginDialog",
+        "description": "",
+        "id": "jj3YF3"
+      },
+      "actions": [
+        {
+          "$kind": "Microsoft.SwitchCondition",
+          "$designer": {
+            "id": "oMH6Ga"
+          },
+          "condition": "user.idioma",
+          "cases": [
+            {
+              "value": "Portugues",
+              "actions": [
+                {
+                  "$kind": "Microsoft.TextInput",
+                  "$designer": {
+                    "id": "Pz9PzC"
+                  },
+                  "disabled": false,
+                  "maxTurnCount": 3,
+                  "alwaysPrompt": false,
+                  "allowInterruptions": false,
+                  "unrecognizedPrompt": "",
+                  "invalidPrompt": "",
+                  "defaultValueResponse": "",
+                  "prompt": "${TextInput_Prompt_Pz9PzC()}",
+                  "property": "user.OptionSubMenu",
+                  "value": "=turn.activity.value"
+                }
+              ]
+            }
+          ],
+          "default": [
+            {
+              "$kind": "Microsoft.SendActivity",
+              "$designer": {
+                "id": "UHXw8q"
+              },
+              "activity": "${SendActivity_UHXw8q()}"
+            },
+            {
+              "$kind": "Microsoft.TextInput",
+              "$designer": {
+                "id": "uMUvAT"
+              },
+              "disabled": false,
+              "maxTurnCount": 3,
+              "alwaysPrompt": false,
+              "allowInterruptions": false,
+              "unrecognizedPrompt": "",
+              "invalidPrompt": "",
+              "defaultValueResponse": "",
+              "prompt": "${TextInput_Prompt_uMUvAT()}",
+              "property": "user.OptionSubMenu",
+              "value": "=turn.activity.value"
+            }
+          ]
+        },
+        {
+          "$kind": "Microsoft.SetProperty",
+          "$designer": {
+            "id": "zopQM5"
+          },
+          "property": "conversation.NumeroPreguntasPorSubMenu",
+          "value": "=conversation.NumeroPreguntasPorSubMenu+1"
+        },
+        {
+          "$kind": "Microsoft.EditArray",
+          "$designer": {
+            "id": "CaXH8z"
+          },
+          "changeType": "push",
+          "itemsProperty": "conversation.OpcionesSubMenu",
+          "value": "=user.OptionSubMenu"
+        },
+        {
+          "$kind": "Microsoft.SwitchCondition",
+          "$designer": {
+            "id": "441t6S"
+          },
+          "condition": "user.OptionSubMenu",
+          "cases": [
+            {
+              "value": "Oportunidad agregar productos",
+              "actions": [
+                {
+                  "$kind": "Microsoft.SwitchCondition",
+                  "$designer": {
+                    "id": "V0Tilr"
+                  },
+                  "condition": "user.idioma",
+                  "cases": [
+                    {
+                      "value": "Portugues",
+                      "actions": [
+                        {
+                          "$kind": "Microsoft.SendActivity",
+                          "$designer": {
+                            "id": "bwwCrR"
+                          },
+                          "activity": "${SendActivity_bwwCrR()}"
+                        }
+                      ]
+                    }
+                  ],
+                  "default": [
+                    {
+                      "$kind": "Microsoft.SendActivity",
+                      "$designer": {
+                        "id": "HWWE8p"
+                      },
+                      "activity": "${SendActivity_HWWE8p()}"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "value": "Oportunidad Tipo de oportunidad",
+              "actions": [
+                {
+                  "$kind": "Microsoft.SwitchCondition",
+                  "$designer": {
+                    "id": "6LtmgP"
+                  },
+                  "condition": "user.idioma",
+                  "cases": [
+                    {
+                      "value": "Portugues",
+                      "actions": [
+                        {
+                          "$kind": "Microsoft.TextInput",
+                          "$designer": {
+                            "id": "D10wYT"
+                          },
+                          "disabled": false,
+                          "maxTurnCount": 3,
+                          "alwaysPrompt": false,
+                          "allowInterruptions": false,
+                          "unrecognizedPrompt": "",
+                          "invalidPrompt": "",
+                          "defaultValueResponse": "",
+                          "property": "user.option",
+                          "value": "=turn.activity.value",
+                          "prompt": "${TextInput_Prompt_D10wYT()}"
+                        },
+                        {
+                          "$kind": "Microsoft.IfCondition",
+                          "$designer": {
+                            "id": "cbc4PG"
+                          },
+                          "condition": "=user.option==\"Informacion general\"",
+                          "actions": [
+                            {
+                              "$kind": "Microsoft.SendActivity",
+                              "$designer": {
+                                "id": "qUE5Iz"
+                              },
+                              "activity": "${SendActivity_qUE5Iz()}"
+                            }
+                          ],
+                          "elseActions": [
+                            {
+                              "$kind": "Microsoft.DeleteProperties",
+                              "$designer": {
+                                "id": "D4QQCX"
+                              },
+                              "properties": [
+                                "user.OptionMenu",
+                                "user.OptionSubMenu",
+                                "user.Option",
+                                "user.option"
+                              ]
+                            },
+                            {
+                              "$kind": "Microsoft.BeginDialog",
+                              "$designer": {
+                                "id": "V6Sskj"
+                              },
+                              "activityProcessed": false,
+                              "dialog": "NexoBotV01"
+                            }
+                          ]
+                        }
+                      ]
+                    }
+                  ],
+                  "default": [
+                    {
+                      "$kind": "Microsoft.TextInput",
+                      "$designer": {
+                        "id": "PsE8sd"
+                      },
+                      "disabled": false,
+                      "maxTurnCount": 3,
+                      "alwaysPrompt": false,
+                      "allowInterruptions": false,
+                      "unrecognizedPrompt": "",
+                      "invalidPrompt": "",
+                      "defaultValueResponse": "",
+                      "prompt": "${TextInput_Prompt_PsE8sd()}",
+                      "property": "user.option",
+                      "value": "=turn.activity.value"
+                    },
+                    {
+                      "$kind": "Microsoft.IfCondition",
+                      "$designer": {
+                        "id": "msTrnE"
+                      },
+                      "condition": "=user.option==\"Informacion general\"",
+                      "actions": [
+                        {
+                          "$kind": "Microsoft.SendActivity",
+                          "$designer": {
+                            "id": "FDQMvQ"
+                          },
+                          "activity": "${SendActivity_FDQMvQ()}"
+                        }
+                      ],
+                      "elseActions": [
+                        {
+                          "$kind": "Microsoft.DeleteProperties",
+                          "$designer": {
+                            "id": "n9amgQ"
+                          },
+                          "properties": [
+                            "user.OptionMenu",
+                            "user.OptionSubMenu",
+                            "user.Option",
+                            "user.option"
+                          ]
+                        },
+                        {
+                          "$kind": "Microsoft.BeginDialog",
+                          "$designer": {
+                            "id": "VnIRJ5"
+                          },
+                          "activityProcessed": false,
+                          "dialog": "NexoBotV01"
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "value": "Oportunidad Tipo de venta",
+              "actions": [
+                {
+                  "$kind": "Microsoft.SwitchCondition",
+                  "$designer": {
+                    "id": "cipKOF"
+                  },
+                  "condition": "user.idioma",
+                  "cases": [
+                    {
+                      "value": "Portugues",
+                      "actions": [
+                        {
+                          "$kind": "Microsoft.SendActivity",
+                          "$designer": {
+                            "id": "7NQOJY"
+                          },
+                          "activity": "${SendActivity_7NQOJY()}"
+                        }
+                      ]
+                    }
+                  ],
+                  "default": [
+                    {
+                      "$kind": "Microsoft.SendActivity",
+                      "$designer": {
+                        "id": "YJmSAR"
+                      },
+                      "activity": "${SendActivity_YJmSAR()}"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "value": "Oportunidad Informacion general",
+              "actions": [
+                {
+                  "$kind": "Microsoft.SwitchCondition",
+                  "$designer": {
+                    "id": "pxePZE"
+                  },
+                  "condition": "user.idioma",
+                  "cases": [
+                    {
+                      "value": "Portugues",
+                      "actions": [
+                        {
+                          "$kind": "Microsoft.TextInput",
+                          "$designer": {
+                            "id": "Pqfuoe"
+                          },
+                          "disabled": false,
+                          "maxTurnCount": 3,
+                          "alwaysPrompt": true,
+                          "allowInterruptions": false,
+                          "unrecognizedPrompt": "",
+                          "defaultValueResponse": "",
+                          "property": "user.option",
+                          "value": "=turn.activity.value",
+                          "prompt": "${TextInput_Prompt_Pqfuoe()}"
+                        },
+                        {
+                          "$kind": "Microsoft.IfCondition",
+                          "$designer": {
+                            "id": "0bzZPi"
+                          },
+                          "condition": "=user.option==\"Informacion general\"",
+                          "actions": [
+                            {
+                              "$kind": "Microsoft.SendActivity",
+                              "$designer": {
+                                "id": "bDMvyk"
+                              },
+                              "activity": "${SendActivity_bDMvyk()}"
+                            }
+                          ],
+                          "elseActions": [
+                            {
+                              "$kind": "Microsoft.DeleteProperties",
+                              "$designer": {
+                                "id": "VGh9B2"
+                              },
+                              "properties": [
+                                "user.OptionMenu",
+                                "user.OptionSubMenu",
+                                "user.Option",
+                                "user.option"
+                              ]
+                            },
+                            {
+                              "$kind": "Microsoft.BeginDialog",
+                              "$designer": {
+                                "id": "fKWs3I"
+                              },
+                              "activityProcessed": false,
+                              "dialog": "NexoBotV01"
+                            }
+                          ]
+                        }
+                      ]
+                    }
+                  ],
+                  "default": [
+                    {
+                      "$kind": "Microsoft.TextInput",
+                      "$designer": {
+                        "id": "GpjFnw"
+                      },
+                      "disabled": false,
+                      "maxTurnCount": 3,
+                      "alwaysPrompt": true,
+                      "allowInterruptions": false,
+                      "unrecognizedPrompt": "",
+                      "invalidPrompt": "",
+                      "prompt": "${TextInput_Prompt_GpjFnw()}",
+                      "property": "user.option",
+                      "value": "=turn.activity.value"
+                    },
+                    {
+                      "$kind": "Microsoft.IfCondition",
+                      "$designer": {
+                        "id": "xUBe19"
+                      },
+                      "condition": "=user.option==\"Informacion general\"",
+                      "actions": [
+                        {
+                          "$kind": "Microsoft.SendActivity",
+                          "$designer": {
+                            "id": "CNPv7A"
+                          },
+                          "activity": "${SendActivity_CNPv7A()}"
+                        }
+                      ],
+                      "elseActions": [
+                        {
+                          "$kind": "Microsoft.DeleteProperties",
+                          "$designer": {
+                            "id": "adKYjJ"
+                          },
+                          "properties": [
+                            "user.OptionMenu",
+                            "user.OptionSubMenu",
+                            "user.Option",
+                            "user.option"
+                          ]
+                        },
+                        {
+                          "$kind": "Microsoft.BeginDialog",
+                          "$designer": {
+                            "id": "aS4UDX"
+                          },
+                          "activityProcessed": false,
+                          "dialog": "NexoBotV01"
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "value": "Oportunidad Crear factibilidad",
+              "actions": [
+                {
+                  "$kind": "Microsoft.SwitchCondition",
+                  "$designer": {
+                    "id": "QfXOUx"
+                  },
+                  "condition": "user.idioma",
+                  "cases": [
+                    {
+                      "value": "Portugues",
+                      "actions": [
+                        {
+                          "$kind": "Microsoft.SendActivity",
+                          "$designer": {
+                            "id": "fHyDXN"
+                          },
+                          "activity": "${SendActivity_fHyDXN()}"
+                        }
+                      ]
+                    }
+                  ],
+                  "default": [
+                    {
+                      "$kind": "Microsoft.SendActivity",
+                      "$designer": {
+                        "id": "sKLg70"
+                      },
+                      "activity": "${SendActivity_sKLg70()}"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "value": "Oportunidad Crear oferta",
+              "actions": [
+                {
+                  "$kind": "Microsoft.SwitchCondition",
+                  "$designer": {
+                    "id": "HGHPeb"
+                  },
+                  "condition": "user.idioma",
+                  "cases": [
+                    {
+                      "value": "Portugues",
+                      "actions": [
+                        {
+                          "$kind": "Microsoft.SendActivity",
+                          "$designer": {
+                            "id": "C0oEEv"
+                          },
+                          "activity": "${SendActivity_C0oEEv()}"
+                        }
+                      ]
+                    }
+                  ],
+                  "default": [
+                    {
+                      "$kind": "Microsoft.SendActivity",
+                      "$designer": {
+                        "id": "Ix6OQk"
+                      },
+                      "activity": "${SendActivity_Ix6OQk()}"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "$kind": "Microsoft.DeleteProperties",
+          "$designer": {
+            "id": "J6g737"
+          },
+          "properties": [
+            "user.OptionMenu",
+            "user.Option",
+            "user.OptionSubMenu",
+            "user.option"
+          ]
+        },
+        {
+          "$kind": "Microsoft.EndDialog",
+          "$designer": {
+            "id": "kDKv4S"
+          }
+        }
+      ]
+    }
+  ],
+  "generator": "Oportunidad.lg",
+  "recognizer": "Oportunidad.lu.qna",
+  "id": "Oportunidad"
+}

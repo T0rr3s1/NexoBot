@@ -1,0 +1,350 @@
+{
+  "$kind": "Microsoft.AdaptiveDialog",
+  "$designer": {
+    "name": "NexoBotV01",
+    "description": "",
+    "id": "A79tBe"
+  },
+  "autoEndDialog": true,
+  "defaultResultProperty": "dialog.result",
+  "triggers": [
+    {
+      "$kind": "Microsoft.OnConversationUpdateActivity",
+      "$designer": {
+        "id": "376720"
+      },
+      "actions": [
+        {
+          "$kind": "Microsoft.Foreach",
+          "$designer": {
+            "id": "518944",
+            "name": "Loop: for each item"
+          },
+          "itemsProperty": "turn.Activity.membersAdded",
+          "actions": [
+            {
+              "$kind": "Microsoft.IfCondition",
+              "$designer": {
+                "id": "641773",
+                "name": "Branch: if/else"
+              },
+              "condition": "string(dialog.foreach.value.id) != string(turn.Activity.Recipient.id)",
+              "actions": [
+                {
+                  "$kind": "Microsoft.SetProperties",
+                  "$designer": {
+                    "id": "CzKNmY"
+                  },
+                  "assignments": [
+                    {
+                      "property": "user.idioma",
+                      "value": "Espanol"
+                    }
+                  ]
+                },
+                {
+                  "$kind": "Microsoft.SetProperties",
+                  "$designer": {
+                    "id": "IXC39q"
+                  },
+                  "assignments": [
+                    {
+                      "property": "conversation.usermessage"
+                    },
+                    {
+                      "property": "conversation.response"
+                    },
+                    {
+                      "property": "conversation.history"
+                    },
+                    {
+                      "property": "conversation.guias"
+                    },
+                    {
+                      "property": "conversation.numeroguias",
+                      "value": 0
+                    },
+                    {
+                      "property": "conversation.opcionesMenu"
+                    },
+                    {
+                      "property": "conversation.OpcionesSubMenu"
+                    },
+                    {
+                      "property": "conversation.NumeroPreguntasUsuario",
+                      "value": 0
+                    },
+                    {
+                      "property": "conversation.NumeroPreguntasPorMenu",
+                      "value": 0
+                    },
+                    {
+                      "property": "conversation.NumeroPreguntasPorSubMenu",
+                      "value": 0
+                    },
+                    {
+                      "property": "conversation.FechaRegistro",
+                      "value": "=addHours(utcNow(), 1)"
+                    }
+                  ]
+                },
+                {
+                  "$kind": "Microsoft.BeginDialog",
+                  "$designer": {
+                    "id": "fXJb8F"
+                  },
+                  "activityProcessed": true,
+                  "dialog": "Menu"
+                }
+              ],
+              "elseActions": []
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "$kind": "Microsoft.OnUnknownIntent",
+      "$designer": {
+        "id": "mb2n1u"
+      },
+      "actions": [
+        {
+          "$kind": "Microsoft.QnAMakerDialog",
+          "$designer": {
+            "id": "j5OI9t"
+          },
+          "knowledgeBaseId": "961d71ac-7c9c-4ee7-a909-32b2fff1964d",
+          "hostname": "https://nexobotprodqna.azurewebsites.net/qnamaker",
+          "noAnswer": "${QnAMakerDialog_NoAnswer_j5OI9t()}",
+          "threshold": 0.3,
+          "activeLearningCardTitle": "Did you mean:",
+          "cardNoMatchText": "None of the above.",
+          "cardNoMatchResponse": "Thanks for the feedback.",
+          "top": 3,
+          "isTest": false,
+          "endpointKey": "c4b577e8-589e-43b4-9b40-53a695e44933"
+        },
+        {
+          "$kind": "Microsoft.SendActivity",
+          "$designer": {
+            "id": "AXdfoe"
+          },
+          "activity": "${SendActivity_AXdfoe()}"
+        }
+      ]
+    },
+    {
+      "$kind": "Microsoft.OnIntent",
+      "$designer": {
+        "id": "zBMTYd",
+        "name": "Menu"
+      },
+      "intent": "Menu",
+      "actions": [
+        {
+          "$kind": "Microsoft.BeginDialog",
+          "$designer": {
+            "id": "Suwzfr"
+          },
+          "activityProcessed": true,
+          "dialog": "Menu"
+        }
+      ]
+    },
+    {
+      "$kind": "Microsoft.OnQnAMatch",
+      "$designer": {
+        "id": "RxtHH1"
+      },
+      "actions": [
+        {
+          "$kind": "Microsoft.SetProperty",
+          "$designer": {
+            "id": "TdBWcC"
+          },
+          "property": "conversation.NumeroPreguntasUsuario",
+          "value": "=conversation.NumeroPreguntasUsuario+1"
+        },
+        {
+          "$kind": "Microsoft.IfCondition",
+          "$designer": {
+            "id": "mgeROZ"
+          },
+          "condition": "count(turn.recognized.answers[0].context.prompts) > 0",
+          "actions": [
+            {
+              "$kind": "Microsoft.IfCondition",
+              "$designer": {
+                "id": "yqEknj"
+              },
+              "condition": "=turn.recognized.answers[0].source==\"GuidesQna\"",
+              "actions": [
+                {
+                  "$kind": "Microsoft.SetProperty",
+                  "$designer": {
+                    "id": "l4As2K"
+                  },
+                  "property": "conversation.numeroguias",
+                  "value": "=conversation.numeroguias+1"
+                },
+                {
+                  "$kind": "Microsoft.EditArray",
+                  "$designer": {
+                    "id": "sTybHp"
+                  },
+                  "changeType": "push",
+                  "itemsProperty": "conversation.guias",
+                  "value": "=turn.recognized.answers[0].questions[0]"
+                }
+              ],
+              "elseActions": []
+            },
+            {
+              "$kind": "Microsoft.EditArray",
+              "$designer": {
+                "id": "U7PhCi"
+              },
+              "value": "=turn.recognized.text",
+              "changeType": "push",
+              "itemsProperty": "conversation.usermessage"
+            },
+            {
+              "$kind": "Microsoft.EditArray",
+              "$designer": {
+                "id": "dBgJ59"
+              },
+              "changeType": "push",
+              "itemsProperty": "conversation.response",
+              "value": "=turn.recognized.answers[0].answer"
+            },
+            {
+              "$kind": "Microsoft.SetProperty",
+              "$designer": {
+                "id": "nqeE00"
+              },
+              "property": "dialog.qnaContext",
+              "value": "=turn.recognized.answers[0].context.prompts"
+            },
+            {
+              "$kind": "Microsoft.TextInput",
+              "$designer": {
+                "id": "Gghgra"
+              },
+              "maxTurnCount": 3,
+              "alwaysPrompt": true,
+              "allowInterruptions": false,
+              "prompt": "${TextInput_Prompt_TT7bJt()}",
+              "property": "turn.qnaMultiTurnResponse"
+            },
+            {
+              "$kind": "Microsoft.SetProperty",
+              "$designer": {
+                "id": "6NkV1F"
+              },
+              "property": "turn.qnaMatchFromContext",
+              "value": "=where(dialog.qnaContext, item, item.displayText == turn.qnaMultiTurnResponse)"
+            },
+            {
+              "$kind": "Microsoft.DeleteProperty",
+              "$designer": {
+                "id": "OIfOUV"
+              },
+              "property": "dialog.qnaContext"
+            },
+            {
+              "$kind": "Microsoft.IfCondition",
+              "$designer": {
+                "id": "YGD2cq"
+              },
+              "condition": "turn.qnaMatchFromContext && count(turn.qnaMatchFromContext) > 0",
+              "actions": [
+                {
+                  "$kind": "Microsoft.SetProperty",
+                  "$designer": {
+                    "id": "deardm"
+                  },
+                  "property": "turn.qnaIdFromPrompt",
+                  "value": "=turn.qnaMatchFromContext[0].qnaId"
+                }
+              ]
+            },
+            {
+              "$kind": "Microsoft.EmitEvent",
+              "$designer": {
+                "id": "IeMtlu"
+              },
+              "eventName": "activityReceived",
+              "eventValue": "=turn.activity"
+            }
+          ],
+          "elseActions": [
+            {
+              "$kind": "Microsoft.IfCondition",
+              "$designer": {
+                "id": "lKCLoo"
+              },
+              "condition": "=turn.recognized.answers[0].source==\"GuidesQna\"",
+              "actions": [
+                {
+                  "$kind": "Microsoft.SetProperty",
+                  "$designer": {
+                    "id": "BUC4u0"
+                  },
+                  "property": "conversation.numeroguias",
+                  "value": "=conversation.numeroguias+1"
+                },
+                {
+                  "$kind": "Microsoft.EditArray",
+                  "$designer": {
+                    "id": "3FGP1K"
+                  },
+                  "itemsProperty": "conversation.guias",
+                  "changeType": "push",
+                  "value": "=turn.recognized.answers[0].questions[0]"
+                }
+              ]
+            },
+            {
+              "$kind": "Microsoft.SendActivity",
+              "$designer": {
+                "id": "AoMmZw"
+              },
+              "activity": "${SendActivity_URpvXF()}"
+            },
+            {
+              "$kind": "Microsoft.IfCondition",
+              "$designer": {
+                "id": "9KgNsv"
+              },
+              "condition": "turn.recognized.text==\"Siguiente paso\"",
+              "elseActions": [
+                {
+                  "$kind": "Microsoft.EditArray",
+                  "$designer": {
+                    "id": "Ul4mSQ"
+                  },
+                  "changeType": "push",
+                  "itemsProperty": "conversation.usermessage",
+                  "value": "=turn.recognized.text"
+                }
+              ]
+            },
+            {
+              "$kind": "Microsoft.EditArray",
+              "$designer": {
+                "id": "znGL3C"
+              },
+              "changeType": "push",
+              "itemsProperty": "conversation.response",
+              "value": "=turn.recognized.answers[0].answer"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "generator": "NexoBotV01.lg",
+  "id": "NexoBotV01",
+  "recognizer": "NexoBotV01.lu.qna"
+}

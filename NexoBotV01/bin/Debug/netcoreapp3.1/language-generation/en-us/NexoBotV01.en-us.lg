@@ -1,0 +1,21 @@
+[import](common.lg)
+
+
+# QnAMakerDialog_NoAnswer_j5OI9t()
+- No he entendido tu pregunta. Si deseas escribe "Menu" para ver las opciones que tengo para ti.
+# TextInput_Prompt_TT7bJt()
+[Activity
+    Text = ${expandText(@answer)}
+    SuggestedActions = ${foreach(turn.recognized.answers[0].context.prompts, x, x.displayText)}
+]
+
+# SendActivity_URpvXF()
+- ${expandText(@answer)}
+
+# SendActivity_AXdfoe()
+[Activity
+    Text = ${SendActivity_AXdfoe_text()}
+]
+
+# SendActivity_AXdfoe_text()
+- Prueba2

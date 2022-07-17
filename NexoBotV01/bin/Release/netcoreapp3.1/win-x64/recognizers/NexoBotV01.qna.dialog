@@ -1,0 +1,8 @@
+{
+  "$kind": "Microsoft.MultiLanguageRecognizer",
+  "id": "QnA_NexoBotV01",
+  "recognizers": {
+    "en-us": "NexoBotV01.en-us.qna",
+    "": "NexoBotV01.en-us.qna"
+  }
+}

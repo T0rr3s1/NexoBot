@@ -1,0 +1,7 @@
+{
+  "$kind": "Microsoft.CrossTrainedRecognizerSet",
+  "recognizers": [
+    "NexoBotV01.lu",
+    "NexoBotV01.qna"
+  ]
+}

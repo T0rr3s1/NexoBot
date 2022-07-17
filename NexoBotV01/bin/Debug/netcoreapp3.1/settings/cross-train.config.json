@@ -1,0 +1,13 @@
+{
+  "NexoBotV01.en-us": {
+    "rootDialog": true,
+    "triggers": {
+      "": [
+        "Menu.en-us"
+      ],
+      "Menu": [
+        "Menu.en-us"
+      ]
+    }
+  }
+}

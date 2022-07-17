@@ -1,0 +1,443 @@
+[import](common.lg)
+
+
+
+# AdaptiveCardJson_MenuNovedades()
+- ```
+{
+  "$schema": "http://adaptivecards.io/schemas/adaptive-card.json",
+  "type": "AdaptiveCard",
+  "version": "1.0",
+  "body": [
+    {
+      "type": "ColumnSet",
+      "columns": [
+        {
+          "width": "400px",
+          "type": "Column",
+          "items": [
+             {
+              "type": "ActionSet",
+               "actions": [
+                 {
+                   "type": "Action.Submit",
+                   "title": "Rechazo de novedades",
+                   "value": "Rechazo de novedades",
+                   "data": "Rechazo de novedades"
+                 }
+               ]
+            },
+            {
+              "type": "ActionSet",
+               "actions": [
+                 {
+                   "type": "Action.Submit",
+                   "title": "Cambio cuenta de facturacion",
+                   "value": "Cambio cuenta de facturacion",
+                   "data": "Cambio cuenta de facturacion"
+                 }
+               ]
+            },
+            {
+              "type": "ActionSet",
+               "actions": [
+                 {
+                   "type": "Action.Submit",
+                   "title": "Estado de novedades",
+                   "value": "Estado de novedades",
+                   "data": "Estado de novedades"
+                 }
+               ]
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
+```
+
+ # AdaptiveCard_MenuNovedades()
+[Activity
+    Attachments = ${json(AdaptiveCardJson_MenuNovedades())}
+]
+
+
+# AdaptiveCardJson_MenuNovedadesTeams()
+- ```
+{
+  "$schema": "http://adaptivecards.io/schemas/adaptive-card.json",
+  "type": "AdaptiveCard",
+  "version": "1.0",
+  "body": [
+    {
+      "type": "ColumnSet",
+      "columns": [
+        {
+          "width": "400px",
+          "type": "Column",
+          "items": [
+             {
+              "type": "ActionSet",
+               "actions": [
+                 {
+                   "type": "Action.Submit",
+                   "title": "rejeição de novidades",
+                   "value": "Rechazo de novedades",
+                   "data": "Rechazo de novedades"
+                 }
+               ]
+            },
+            {
+              "type": "ActionSet",
+               "actions": [
+                 {
+                   "type": "Action.Submit",
+                   "title": "Alterar conta de faturamento",
+                   "value": "Cambio cuenta de facturacion",
+                   "data": "Cambio cuenta de facturacion"
+                 }
+               ]
+            },
+            {
+              "type": "ActionSet",
+               "actions": [
+                 {
+                   "type": "Action.Submit",
+                   "title": "Status de novidades",
+                   "value": "Estado de novedades",
+                   "data": "Estado de novedades"
+                 }
+               ]
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
+```
+
+ # AdaptiveCard_MenuNovedadesTeams()
+[Activity
+    Attachments = ${json(AdaptiveCardJson_MenuNovedadesTeams())}
+]
+
+# TextInput_Prompt_Jf0CJz()
+- ${json(AdaptiveCard_MenuNovedades())}
+# TextInput_Prompt_13Oria()
+- ${json(AdaptiveCard_MenuNovedadesTeams())}
+# SendActivity_jgZq4L()
+[Activity
+    Attachments = ${json(SendActivity_jgZq4L_attachment_LZWyA5())}
+]
+
+# SendActivity_jgZq4L_attachment_LZWyA5()
+- ```
+{
+    "type": "AdaptiveCard",
+    "version": "1.0",
+    "body": [
+        {
+              "type": "ActionSet",
+               "actions": [
+                 {
+                   "type": "Action.Submit",
+                   "title": "Guia",
+                   "value": "Guia",
+                   "data": "Rechazo de novedad"
+                 }
+               ]
+        }
+    ]
+}
+```
+# SendActivity_URUkFX()
+[Activity
+    Attachments = ${json(SendActivity_URUkFX_attachment_z0KyLW())}
+]
+
+# SendActivity_URUkFX_attachment_z0KyLW()
+- ```
+{
+    "type": "AdaptiveCard",
+    "version": "1.0",
+    "body": [
+        {
+              "type": "ActionSet",
+               "actions": [
+                 {
+                   "type": "Action.Submit",
+                   "title": "Guia",
+                   "value": "Guia",
+                   "data": "Rejeição de Novidades"
+                 }
+               ]
+        }
+    ]
+}
+```
+# TextInput_Prompt_dsJA7x()
+[Activity
+    Attachments = ${json(TextInput_Prompt_dsJA7x_attachment_iWdCbQ())}
+]
+
+# TextInput_Prompt_dsJA7x_attachment_iWdCbQ()
+- ```
+{
+    "type": "AdaptiveCard",
+    "version": "1.0",
+    "body": [
+        {
+              "type": "ActionSet",
+               "actions": [
+                 {
+                   "type": "Action.Submit",
+                   "title": "Guia",
+                   "value": "Guia",
+                   "data": "Estado de novedades"
+                 }
+               ]
+        },
+        {
+                   "type": "Action.Submit",
+                   "title": "Informacion general",
+                   "value": "Informacion general",
+                   "data": "Informacion general"
+                 }
+               ]
+        }
+    ]
+}
+```
+
+
+# TextInput_Prompt_ueZEWL()
+[Activity
+    Attachments = ${json(TextInput_Prompt_ueZEWL_attachment_UovmRH())}
+]
+
+# TextInput_Prompt_ueZEWL_attachment_UovmRH()
+- ```
+{
+    "type": "AdaptiveCard",
+    "version": "1.0",
+    "body": [
+        {
+              "type": "ActionSet",
+               "actions": [
+                 {
+                   "type": "Action.Submit",
+                   "title": "Guia",
+                   "value": "Guia",
+                   "data": "Estado de Novidades"
+                 }
+               ]
+        },
+        {
+                   "type": "Action.Submit",
+                   "title": "Informações gerais",
+                   "value": "Informacion general",
+                   "data": "Informacion general"
+                 }
+               ]
+        }
+    ]
+}
+```
+
+
+# SendActivity_az0mVw()
+[Activity
+    Attachments = ${json(SendActivity_az0mVw_attachment_qT72rj())}
+]
+
+# SendActivity_az0mVw_attachment_qT72rj()
+> To learn more Adaptive Cards format, read the documentation at
+> https://docs.microsoft.com/en-us/adaptive-cards/getting-started/bots
+- ```
+{
+  "$schema": "http://adaptivecards.io/schemas/adaptive-card.json",
+  "type": "AdaptiveCard",
+  "version": "1.0",
+  "body": [
+    {
+      "type": "ColumnSet",
+      "columns": [
+        {
+          "width": "5",
+          "type": "Column",
+          "items": [
+            {
+              "type": "ActionSet",
+               "actions": [
+                 {
+                   "type": "Action.Submit",
+                   "title": "¿Generación de parámetro por parte de la novedad?",
+                   "value": "¿Generación de parámetro por parte de la novedad?",
+                   "data": "¿Generación de parámetro por parte de la novedad?"
+                 }
+               ]
+            },
+            {
+              "type": "ActionSet",
+               "actions": [
+                 {
+                   "type": "Action.Submit",
+                   "title": "¿Renovación?",
+                   "value": "¿Renovación?",
+                   "data": "¿Renovación?"
+                 }
+               ]
+            },
+            {
+              "type": "ActionSet",
+               "actions": [
+                 {
+                   "type": "Action.Submit",
+                   "title": "¿Novedades de facturación?",
+                   "value": "¿Novedades de facturación?",
+                   "data": "¿Novedades de facturación?"
+                 }
+               ]
+            },
+            {
+              "type": "ActionSet",
+              "wrap": "True",
+               "actions": [
+                 {
+                   "type": "Action.Submit",
+                   "title": "¿Criterio de aceptación rechazado por el cliente?",
+                   "value": "¿Criterio de aceptación rechazado por el cliente?",
+                   "data": "¿Criterio de aceptación rechazado por el cliente?"
+                 }
+               ]
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}```
+# SendActivity_Y4vkoQ()
+[Activity
+    Attachments = ${json(SendActivity_Y4vkoQ_attachment_X7fUf9())}
+]
+
+# SendActivity_Y4vkoQ_attachment_X7fUf9()
+> To learn more Adaptive Cards format, read the documentation at
+> https://docs.microsoft.com/en-us/adaptive-cards/getting-started/bots
+- ```
+{
+  "$schema": "http://adaptivecards.io/schemas/adaptive-card.json",
+  "type": "AdaptiveCard",
+  "version": "1.0",
+  "body": [
+    {
+      "type": "ColumnSet",
+      "columns": [
+        {
+          "width": "5",
+          "type": "Column",
+          "items": [
+            {
+              "type": "ActionSet",
+               "actions": [
+                 {
+                   "type": "Action.Submit",
+                   "title": "Geração de parâmetros por novidade?",
+                   "value": "Geração de parâmetros por novidade?",
+                   "data": "Geração de parâmetros por novidade?"
+                 }
+               ]
+            },
+            {
+              "type": "ActionSet",
+               "actions": [
+                 {
+                   "type": "Action.Submit",
+                   "title": "Renovação?",
+                   "value": "Renovação?",
+                   "data": "Renovação?"
+                 }
+               ]
+            },
+            {
+              "type": "ActionSet",
+               "actions": [
+                 {
+                   "type": "Action.Submit",
+                   "title": "Novidade de faturamento?",
+                   "value": "Novidade de faturamento?",
+                   "data": "Novidade de faturamento?"
+                 }
+               ]
+            },
+            {
+              "type": "ActionSet",
+              "wrap": "True",
+               "actions": [
+                 {
+                   "type": "Action.Submit",
+                   "title": "Critérios de aceitação rejeitados pelo cliente?",
+                   "value": "Critérios de aceitação rejeitados pelo cliente?",
+                   "data": "Critérios de aceitação rejeitados pelo cliente?"
+                 }
+               ]
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}```
+# SendActivity_KW1Q4z()
+[Activity
+    Attachments = ${json(SendActivity_KW1Q4z_attachment_EFKhd5())}
+]
+
+# SendActivity_KW1Q4z_attachment_EFKhd5()
+- ```
+{
+    "type": "AdaptiveCard",
+    "version": "1.0",
+    "body": [
+        {
+              "type": "ActionSet",
+               "actions": [
+                 {
+                   "type": "Action.Submit",
+                   "title": "Guia",
+                   "value": "Guia",
+                   "data": "Cambio cuenta de facturacion"
+                 }
+               ]
+        }
+    ]
+}
+```
+# SendActivity_v7WDAo()
+[Activity
+    Attachments = ${json(SendActivity_v7WDAo_attachment_vhVCCS())}
+]
+
+# SendActivity_v7WDAo_attachment_vhVCCS()
+- ```
+{
+    "type": "AdaptiveCard",
+    "version": "1.0",
+    "body": [
+        {
+              "type": "ActionSet",
+               "actions": [
+                 {
+                   "type": "Action.Submit",
+                   "title": "Guia",
+                   "value": "Guia",
+                   "data": "Alterar conta de faturamento"
+                 }
+               ]
+        }
+    ]
+}
+```
